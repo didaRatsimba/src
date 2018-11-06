@@ -21,18 +21,18 @@ def Fornberg_filter(Nlength,order):
   This function computes the Fornberg filters
   '''
 
-  x = np.arange(-int(Nlength/2),Nlength/2+1,1)
+  x = np.arange(-int(Nlength/2),Nlength/2.+1,1)
   z = 0.0
   k = order
   n = Nlength
   m = n -1
-  c1 = 1
+  c1 = 1.0
   c4 = x[0] - z
   c = np.zeros((n, m+1),'f')
-  c[0,0] = 1
+  c[0,0] = 1.0
   for i in range(1, n):
     mn = min(i, m)
-    c2 = 1
+    c2 = 1.0
     c5 = c4
     c4 = x[i] - z
     for j in range(i):
@@ -133,9 +133,9 @@ try:
   functions[axis](Fin,Fout,f,order,scale)
 except:
   import sys
-  print >> sys.stderr, '========== sfnderiv ERROR ==========='
-  print >> sys.stderr, 'Error: valid axis values are 1,2 or 3'
-  print >> sys.stderr, '====================================='
+  print('========== sfnderiv ERROR ===========', file=sys.stderr)
+  print('Error: valid axis values are 1,2 or 3', file=sys.stderr)
+  print('=====================================', file=sys.stderr)
   sys.exit(1)
 
 Fin.close()
